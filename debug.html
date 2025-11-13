@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debug Salones</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .success { color: green; }
+        .error { color: red; }
+    </style>
+</head>
+<body>
+    <h1>Debug - Sistema de Salones</h1>
+    <div id="debug-info"></div>
+
+    <script src="js/database.js"></script>
+    <script>
+        console.log('=== INICIANDO DEBUG ===');
+        
+        // Test 1: Verificar si database.js carga
+        const debugInfo = document.getElementById('debug-info');
+        debugInfo.innerHTML += '<p>1. Probando carga de database.js...</p>';
+        
+        if (typeof appDatabase !== 'undefined') {
+            debugInfo.innerHTML += '<p class="success">✅ database.js cargado correctamente</p>';
+            console.log('appDatabase:', appDatabase);
+        } else {
+            debugInfo.innerHTML += '<p class="error">❌ ERROR: appDatabase no está definido</p>';
+        }
+        
+        // Test 2: Verificar datos en LocalStorage
+        debugInfo.innerHTML += '<p>2. Probando LocalStorage...</p>';
+        const storedData = localStorage.getItem('salonesInfantilesData');
+        if (storedData) {
+            debugInfo.innerHTML += '<p class="success">✅ Datos encontrados en LocalStorage</p>';
+            const data = JSON.parse(storedData);
+            console.log('Datos en LocalStorage:', data);
+            debugInfo.innerHTML += `<p>Número de salones: ${data.length}</p>`;
+            
+            // Mostrar nombres de salones
+            data.forEach(salon => {
+                debugInfo.innerHTML += `<p>• ${salon.name} (ID: ${salon.id})</p>`;
+            });
+        } else {
+            debugInfo.innerHTML += '<p class="error">❌ No hay datos en LocalStorage</p>';
+        }
+        
+        // Test 3: Probar getAllSalones
+        debugInfo.innerHTML += '<p>3. Probando getAllSalones()...</p>';
+        try {
+            const salones = appDatabase.getAllSalones();
+            debugInfo.innerHTML += `<p class="success">✅ getAllSalones() funciona - ${salones.length} salones</p>`;
+            console.log('Salones desde getAllSalones:', salones);
+        } catch (error) {
+            debugInfo.innerHTML += `<p class="error">❌ Error en getAllSalones: ${error.message}</p>`;
+        }
+        
+        console.log('=== DEBUG COMPLETADO ===');
+    </script>
+</body>
+</html>

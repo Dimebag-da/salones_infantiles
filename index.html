@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salones Infantiles - Fiesta y Diversión</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <h1 class="logo">🎉 Salones Infantiles 🎈</h1>
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="Buscar salón...">
+                <i class="fas fa-search"></i>
+            </div>
+            <button id="adminBtn" class="admin-btn">Panel Admin</button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="container">
+            <div id="salonesContainer" class="salones-grid">
+                <!-- Los salones se cargarán aquí dinámicamente -->
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal para comentarios -->
+    <div id="commentsModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="modalContent">
+                <!-- Contenido del modal se cargará aquí -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Panel de Admin -->
+    <div id="adminPanel" class="admin-panel">
+        <div class="admin-header">
+            <h2>Panel de Administración</h2>
+            <button id="closeAdminBtn" class="close-admin-btn">Cerrar</button>
+        </div>
+        <div class="admin-content">
+            <div class="admin-actions">
+                <button id="addSalonBtn" class="btn-primary">Agregar Salón</button>
+                <button id="refreshDataBtn" class="btn-secondary">Actualizar Datos</button>
+                <button id="resetDataBtn" class="btn-danger">Restablecer Datos</button>
+            </div>
+            <div id="adminSalonesList" class="admin-salones-list">
+                <!-- Lista de salones para administración -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/database.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/comments.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+</html>
