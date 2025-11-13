@@ -134,7 +134,7 @@ function verifyAdminCredentials() {
     const enteredPassword = passwordInput.value;
     
     // Contraseña hasheada simple (en un caso real usarías bcrypt)
-    const hashedPassword = 'admin123'; // En producción, esto debería estar en el backend
+    const hashedPassword = 'DarrellRS023'; // En producción, esto debería estar en el backend
     
     if (enteredPassword === hashedPassword) {
         isAdmin = true;
